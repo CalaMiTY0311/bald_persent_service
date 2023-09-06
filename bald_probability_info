@@ -1,0 +1,9 @@
+age = Age of people in data
+gender = Male or female (1 = Male and 0 = female)
+is_married = Married status (1 = Yes and 0 = No)
+is_hereditary = Is the bald based from hereditary? (1 = Yes and 0 = No)
+weight = weight of people body in data
+height = height of people body in data
+is_smoker = Is the people a smoker? (1 = Yes and 0 = No)
+stress = Stress level of people in range 1 (lower) to 10 (highest)
+bald_prob = Probability score of bald which occur to people in range 0 to 1. The higher probability score means the higher probability to baldness occurred and vice versa.
