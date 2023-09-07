@@ -29,17 +29,23 @@ X_test_poly = poly.transform(X_test)
 
 model = LinearRegression()
 model.fit(X_train_poly, y_train)
-y_pred = model.predict(X_test_poly) 
+complete_model = model
+y_pred = model.predict(X_test_poly)
 
-result = model.predict([24,1,0,1,83,175,0,7])
-print(result)
+new_data = np.array([24, 1, 0, 1, 83, 175, 0, 7]).reshape(1, -1)  # reshape를 통해 2D 배열로 변환
+print("new_data : ",new_data)
+new_data_poly = poly.transform(new_data)
+print("new_data_poly : ",new_data_poly)
+prediction = model.predict(new_data_poly)
+print(prediction)
+
 # 잔차 구하기 
 y_mean = np.mean(y_test) 
 # # y 평균값 # $\sum(y 예측값 - y 평균값)^2$ = 예측값에 대한 편차 
 nomerator = np.sum(np.square(y_test - y_pred)) # $sum(y 관측값 - y 평균값)^2$ 
 denominator = np.sum(np.square(y_test - y_mean)) 
-r2 = 1 - nomerator / denominator 
-print(r2)
+accuracy = 1 - nomerator / denominator 
+print(accuracy)
 
 
 # # 그래프 그리기

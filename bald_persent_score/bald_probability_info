@@ -7,3 +7,4 @@ height = height of people body in data
 is_smoker = Is the people a smoker? (1 = Yes and 0 = No)
 stress = Stress level of people in range 1 (lower) to 10 (highest)
 bald_prob = Probability score of bald which occur to people in range 0 to 1. The higher probability score means the higher probability to baldness occurred and vice versa.
+[24,1,0,1,83,175,0,7]
