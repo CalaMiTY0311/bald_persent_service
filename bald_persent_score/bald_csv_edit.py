@@ -1,8 +1,13 @@
-import csv
 import pandas as pd
 import os
+import csv
 
-dataset = pd.read_csv('bald_probability.csv',index_col = 0,encoding='utf-8-sig')
+# directory = os.path.dirname(__file__)
+# path = os.path.join(directory, 'bald_probability.csv')
+
+# dataset = pd.read_csv(path, index_col=0, encoding='utf-8-sig')
+
+#dataset = pd.read_csv('bald_probability.csv',index_col = 0,encoding='utf-8-sig')
 
 #dataset = dataset.dropna()                                                     #NAN/빈값있는 행 제거
 

@@ -3,10 +3,9 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
-from bald_csv_edit import dataset
 import matplotlib.pyplot as plt
 import pandas as pd
-
+import os
 
 # 데이터 준비
 #options = dataset[['age', 'gender', 'is_married', 'is_hereditary', 'weight', 'height', 'is_smoker', 'stress']]
@@ -16,6 +15,11 @@ import pandas as pd
 #                                                    bald_prob, 
 #                                                    test_size = 0.3,
 #                                                    random_state=156)
+
+directory = os.path.dirname(__file__)
+path = os.path.join(directory, 'bald_probability.csv')
+
+dataset = pd.read_csv(path, index_col=0, encoding='utf-8-sig')
 
 train, test = train_test_split(dataset, test_size = 0.3)
 X_train = train[['age', 'gender', 'is_married', 'is_hereditary', 'weight', 'height', 'is_smoker', 'stress']]
@@ -28,25 +32,25 @@ X_train_poly = poly.fit_transform(X_train)
 X_test_poly = poly.transform(X_test)
 
 model = LinearRegression()
-model.fit(X_train_poly, y_train)
-complete_model = model
-y_pred = model.predict(X_test_poly)
+complete_model = model.fit(X_train_poly, y_train)
 
-new_data = np.array([24, 1, 0, 1, 83, 175, 0, 7]).reshape(1, -1)  # reshape를 통해 2D 배열로 변환
-print("new_data : ",new_data)
-new_data_poly = poly.transform(new_data)
-print("new_data_poly : ",new_data_poly)
-prediction = model.predict(new_data_poly)
-print(prediction)
+def accuracy_result():
+#----------------------------------------------------accuracy----------------------------------------------------
+	y_pred = complete_model.predict(X_test_poly)
+	# 잔차 구하기 
 
-# 잔차 구하기 
-y_mean = np.mean(y_test) 
-# # y 평균값 # $\sum(y 예측값 - y 평균값)^2$ = 예측값에 대한 편차 
-nomerator = np.sum(np.square(y_test - y_pred)) # $sum(y 관측값 - y 평균값)^2$ 
-denominator = np.sum(np.square(y_test - y_mean)) 
-accuracy = 1 - nomerator / denominator 
-print(accuracy)
+	y_mean = np.mean(y_test) 
+	# # y 평균값 # $\sum(y 예측값 - y 평균값)^2$ = 예측값에 대한 편차 
+	nomerator = np.sum(np.square(y_test - y_pred)) # $sum(y 관측값 - y 평균값)^2$ 
+	denominator = np.sum(np.square(y_test - y_mean)) 
+	accuracy = 1 - nomerator / denominator 
+	return accuracy
+#----------------------------------------------------accuracy----------------------------------------------------
 
+def predict_result(data):
+	data = poly.transform(data)
+	predict = complete_model.predict(data)
+	return predict
 
 # # 그래프 그리기
 # plt.figure(figsize=(8, 6))
