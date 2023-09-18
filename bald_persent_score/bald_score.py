@@ -34,6 +34,8 @@ X_test_poly = poly.transform(X_test)
 model = LinearRegression()
 complete_model = model.fit(X_train_poly, y_train)
 
+#need bald_train function :<
+
 def accuracy_result():
 #----------------------------------------------------accuracy----------------------------------------------------
 	y_pred = complete_model.predict(X_test_poly)
