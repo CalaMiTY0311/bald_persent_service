@@ -24,7 +24,7 @@ const Header = () => {
                         <Collapse isOpen={isOpen} navbar className="hover-dropdown font-14 justify-content-end" id="h6-info">
                             <Nav navbar className="ms-auto">
                                 <NavItem>
-                                    <Link className="nav-link" to={"/"}>
+                                    <Link className="nav-link" to={"/components"}>
                                         Components
                                     </Link>
                                 </NavItem>

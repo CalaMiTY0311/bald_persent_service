@@ -1,10 +1,16 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 
 import numpy as np
 
 app = FastAPI()
+
+app.add_middleware( CORSMiddleware, 
+                   allow_origins=["http://localhost:3000"], # 클라이언트 주소를 여기에 설정 
+				   allow_methods=["*"], 
+				   allow_headers=["*"], )
 
 @app.get("/")
 def hello():
@@ -46,7 +52,7 @@ async def bald_persent_predict(data : bald_persent_info):
 	
 	now_acc = accuracy_result()
 	#now_accuracy = bald_score.accuracy
-
+	
 	result = {"now_acc":now_acc, "predict":predict.tolist()[0]}
 	# result = {"predict_result":bald_persent_result, "now_accuracy":now_accuracy}
 	# return result

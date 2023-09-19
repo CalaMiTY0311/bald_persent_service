@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Components from "./views/components/components.jsx";
 import CustomComponents from "./views/custom-components/custom-components.jsx";
+import Main from "./views/main/main.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,7 +19,8 @@ root.render(
   <HashRouter history={hist}>
     <Routes>
       <Route path="/custom-components" element={<CustomComponents />} />
-      <Route path="/" element={<Components />} />
+      <Route path="/" element={<Main />} />
+      <Route path="/components" element={<Components />}/>
     </Routes>
   </HashRouter>
 );
