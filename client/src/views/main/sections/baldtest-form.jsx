@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
 
 
 function Baldform ()  {
-
+  	
+  	const Navigate = useNavigate();
+		
     const [age, setAge] = useState(''); 
     const [gender, setGender] = useState(1); 
     const [isMarried, setIsMarried] = useState(1); 
@@ -13,6 +16,8 @@ function Baldform ()  {
     const [height, setHeight] = useState(''); 
     const [isSmoker, setIsSmoker] = useState(1); 
     const [stress, setStress] = useState(1);
+	
+		const [responseData , saveResponseData ] = useState(null);
 
     const Bald_datapost =  () => {
 		const data = { 
@@ -25,15 +30,9 @@ function Baldform ()  {
                         is_smoker: isSmoker, 
                         stress: stress, 
                     };
-        
-        axios.post('http://localhost:8000/bald_persent_predict', data)
-        .then(response =>{
-            console.log(response)
-        })
-        .catch(error => {
-            console.log('error:',error)
-        })
-    }
+                  Navigate(`result?data=${JSON.stringify(data)}`)
+                  
+      }
 
     return (
         <div>
@@ -41,7 +40,7 @@ function Baldform ()  {
                 <Container>
                     <Row className="justify-content-center">
                         <Col md="7" className="text-center">
-                            <h1 className="title font-bold">Form</h1>
+                            <h1 className="title font-bold" id="baldtest">Form</h1>
                             <h6 className="subtitle">age = Age of people in datagender = Male or female (1 = Male and 0 = female)</h6>
 							<h6 className="subtitle">is_married = Married status (1 = Yes and 0 = No)</h6>
 							<h6 className="subtitle">is_hereditary = Is the bald based from hereditary? (1 = Yes and 0 = No)</h6>

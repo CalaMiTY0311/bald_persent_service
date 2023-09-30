@@ -24,18 +24,23 @@ const Header = () => {
                         <Collapse isOpen={isOpen} navbar className="hover-dropdown font-14 justify-content-end" id="h6-info">
                             <Nav navbar className="ms-auto">
                                 <NavItem>
-                                    <Link className="nav-link" to={"/components"}>
+                                    <Link className="nav-link" to="/components">
                                         Components
                                     </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <Link className="nav-link" to={"/custom-components"}>
+                                <Link className="nav-link" to="/result">
+                                        Result
+                                    </Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link className="nav-link" to="/custom-components">
                                         Custom-Components
                                     </Link>
                                 </NavItem>
                             </Nav>
                             <div className="act-buttons">
-                                <Link to="/#coming" className="btn btn-success-gradiant font-14">Upgrade To Pro</Link>
+                                <Link to="/coming" className="btn btn-success-gradiant font-14">Upgrade To Pro</Link>
                             </div>
                         </Collapse>
                     </Navbar>
