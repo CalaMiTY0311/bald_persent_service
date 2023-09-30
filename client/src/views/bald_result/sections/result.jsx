@@ -4,40 +4,61 @@ import axios from 'axios';
 
 //import { Container, Row, Col } from 'reactstrap';
 
-//import img1 from '../../../assets/images/ui/img6.jpg';
-//import img2 from '../../../assets/images/ui/5.jpg';
+//predict persent when image
+import img1 from '../../../assets/images/ui/img6.jpg';
+import img2 from '../../../assets/images/ui/5.jpg';
+import img3 from '../../../assets/images/ui/1.jpg'
+
+//notbad Bald persent
 
 const Result = () => {
 	
 	const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
 	const dataParam = searchParams.get('data');
-	
-    const [responseData, setResponseData] = useState(null);
-    //let imgPath = '';
 
-    // if (percentage >= 1 && percentage <= 30) {
-    //     imgPath = img1;
-    // } else if (percentage > 30 && percentage <= 60) {
-    //     imgPath = img2;
-    // } // 여기에 필요한 다른 조건을 추가할 수 있습니다.
+    const [resultPredict, setresultPredict] = useState(null);
+    
+    let imgPath = '';
+
 	const data = JSON.parse(dataParam);
 
+    useEffect(() => {
 	axios.post('http://localhost:8000/bald_persent_predict', data)
         .then(response =>{
-            const responseData = response.data;
-            setResponseData(responseData);
-            console.log(response)
+            const resultPredict = Math.floor(response.data.predict*100);
+            setresultPredict(resultPredict);
+	
+            if (resultPredict >= 1 && resultPredict <= 30) {
+        		imgPath = img1;
+        		console.log('good')
+    		} else if (resultPredict > 30 && resultPredict <= 60) {
+        		imgPath = img2;
+        		console.log('bad')
+    		} // 여기에 필요한 다른 조건을 추가할 수 있습니다. 
+
+            console.log(resultPredict)
         })
         .catch(error => {
             console.log('error:',error)
         })
+    }, [])
+	
+	
+    if (resultPredict >= 1 && resultPredict <= 30) {
+        imgPath = img1;
+        console.log('good')
+    } else if (resultPredict > 30 && resultPredict <= 60) {
+        imgPath = img2;
+        console.log('bad')
+    } // 여기에 필요한 다른 조건을 추가할 수 있습니다. 
 
     return (
         <div>
-            { responseData && (
+            { resultPredict !==null && (
                 <div>
-                {responseData.predict}
+                {resultPredict}
+                { imgPath }
             	</div>
             ) }
         </div>
