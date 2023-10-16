@@ -2,6 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
+//social container css
+import styled from "styled-components";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    TwitterShareButton,
+    TwitterIcon,
+} from "react-share";
+
 import { Container, Row, Col } from 'reactstrap';
 
 //predict persent when image
@@ -55,6 +65,38 @@ const Result = () => {
         
     }, [data])
 
+	const FlexContainer = styled.div`
+    	display: flex;
+        flex-direction: column;
+        align-items: center;
+    `;
+    
+    const GridContainer = styled.div`
+    	display: grid;
+        grid-template-columns: repeat(4, 48px);
+        grid-column-gap: 8px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 16px;
+    `;
+
+    const URLShareButton = styled.button`
+    	width: 48px;
+        height: 48px;
+        color: white;
+        border-radius: 24px;
+        border: 0px;
+        font-weight: 800;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: #7362ff;
+        &:hover {
+            background-color: #a99fee;
+        }
+    `;
+    
+    const currentUrl = window.location.href;
+
     useEffect(()=>{
         const kakaoScript = document.createElement('script');
       kakaoScript.src = 'https://developers.kakao.com/sdk/js/kakao.js';
@@ -81,7 +123,7 @@ const Result = () => {
             });
         }
     }, [resultPredict, resultMessage])
-
+	
     return (
         <div>
             <div className="spacer" id="imgs-component">
@@ -109,6 +151,23 @@ const Result = () => {
                 </script> */}
                 <button id="kakao-share-button">kakao</button>
             </Container>
+			
+            <FlexContainer>
+                <h1>social send</h1>
+                <GridContainer>
+                    <FacebookShareButton url={currentUrl}>
+                        <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>
+                    </FacebookShareButton>
+                	<TwitterShareButton url={currentUrl}>
+                        <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
+                    </TwitterShareButton>
+                    <CopyToClipboard text={currentUrl}>
+                        <URLShareButton>URL</URLShareButton>
+                    </CopyToClipboard>
+                <button>4</button>
+                </GridContainer>
+            </FlexContainer>
+
         </div>
         </div>
     );
