@@ -6,7 +6,7 @@ import { createBrowserHistory } from "history";
 import {
   Route,
   Routes,
-  Link,
+  //Link,
   BrowserRouter
 } from "react-router-dom";
 import Components from "./views/components/components.jsx";

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,8 +15,6 @@ function Baldform ()  {
     const [height, setHeight] = useState(''); 
     const [isSmoker, setIsSmoker] = useState(1); 
     const [stress, setStress] = useState(1);
-	
-		const [responseData , saveResponseData ] = useState(null);
 
     const Bald_datapost =  () => {
 		const data = { 
@@ -36,25 +33,10 @@ function Baldform ()  {
 
     return (
         <div>
-            <div className="spacer" id="forms-component">
-                <Container>
-                    <Row className="justify-content-center">
-                        <Col md="7" className="text-center">
-                            <h1 className="title font-bold" id="baldtest">Form</h1>
-                            <h6 className="subtitle">age = Age of people in datagender = Male or female (1 = Male and 0 = female)</h6>
-							<h6 className="subtitle">is_married = Married status (1 = Yes and 0 = No)</h6>
-							<h6 className="subtitle">is_hereditary = Is the bald based from hereditary? (1 = Yes and 0 = No)</h6>
-							<h6 className="subtitle">weight = weight of people body in data</h6>
-							<h6 className="subtitle">height = height of people body in data</h6>
-							<h6 className="subtitle">is_smoker = Is the people a smoker? (1 = Yes and 0 = No)</h6>
-							<h6 className="subtitle">stress = Stress level of people in range 1 (lower) to 10 (highest)</h6>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+          <br/><br/><br/>
             <Container>
-                <Row>
-                    <Col md="12">
+                <Row className="justify-content-center">
+                    <Col md="8">
                         <Form className="row">
                         <FormGroup>
         <Label htmlFor="age">Age</Label>
@@ -160,6 +142,7 @@ function Baldform ()  {
                     </Col>
                 </Row>
             </Container>
+            <br/><br/><br/>
         </div>
     );
 }
