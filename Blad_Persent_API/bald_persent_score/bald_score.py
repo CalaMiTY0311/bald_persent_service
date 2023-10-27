@@ -54,14 +54,15 @@ def predict_result(data):
 	predict = complete_model.predict(data)
 	return predict
 
-# # 그래프 그리기
-# plt.figure(figsize=(8, 6))
 
-# # 실제값과 예측값의 산점도 그리기
-# plt.scatter(y_test, y_pred, color='blue', alpha=0.7)
-# plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red', linewidth=2)  # 대각선 기준선
+# 그래프 그리기
+#plt.figure(figsize=(8, 6))
 
-# plt.title("실제값 대 예측값")
-# plt.xlabel("실제값")
-# plt.ylabel("예측값")
-# plt.show()
+# 실제값과 예측값의 산점도 그리기
+#plt.scatter(y_test, y_pred, color='blue', alpha=0.7)
+#plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red', linewidth=2)  # 대각선 기준선
+#
+#plt.title("실제값 대 예측값")
+#plt.xlabel("실제값")
+#plt.ylabel("예측값")
+#plt.show()
