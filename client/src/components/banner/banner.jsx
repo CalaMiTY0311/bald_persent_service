@@ -8,7 +8,7 @@ const HeaderBanner = () => {
             <Container>
                 <Row className="justify-content-center">
                     <Col lg="8" md="6" className="align-self-center text-center">
-                        <h1 className="title">do you know your warning bald persent???</h1>
+                        <h1 className="title">Man vs 탈모</h1>
                         <h4 className="subtitle font-light">bald waring score<br /> i service for you</h4>
                         <Link smooth to="/#survey-section" className="btn btn-md m-t-30 btn-info-gradiant font-14">go go bald waring test</Link>
                     </Col>

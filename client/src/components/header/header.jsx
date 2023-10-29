@@ -29,11 +29,6 @@ const Header = () => {
                                     </Link>
                                 </NavItem>
                                 <NavItem>
-                                <Link className="nav-link" to="/result">
-                                        Result
-                                    </Link>
-                                </NavItem>
-                                <NavItem>
                                     <Link className="nav-link" to="/custom-components">
                                         Custom-Components
                                     </Link>

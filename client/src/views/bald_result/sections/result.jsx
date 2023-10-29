@@ -13,19 +13,15 @@ import {
 } from "react-share";
 import kakaoLogo from '../../../assets/images/logos/kakao-button.jpg';
 
-import { Container, Row, Col } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 
 //predict persent when image
-
-
 import very_safe_img from '../../../assets/images/bald_result_img/very_safe/img.jpg';
 import just_safe_img from '../../../assets/images/bald_result_img/just_safe/img.jpg';
 import not_safe_img from '../../../assets/images/bald_result_img/not_safe/img.jpg';
-import warning_img from '../../../assets/images/bald_result_img/vwarning/img.jpg';
+import warning_img from '../../../assets/images/bald_result_img/warning/img.jpg';
 import bald_img from '../../../assets/images/bald_result_img/bald/img.jpg';
 
-
-//notbad Bald persent
 
 const Result = () => {
    
@@ -47,7 +43,6 @@ const Result = () => {
             const resultPredict = Math.floor(parseInt(response.data.predict*100));
             setresultPredict(resultPredict);
          
-
             if (resultPredict <= 25) {
                 imgPath.current = very_safe_img;
                 var resultMessage = '지금 탈모갤로 놀러가 비틱질을 해보아요'
@@ -177,17 +172,20 @@ const Result = () => {
                     <Row className="justify-content-center">
                         <Col md="7" className="text-center">
                             <h1 className="title font-bold">Result</h1>
-                            <h6 className="subtitle">{ resultMessage }</h6>
+                            <br/><br/>
+                            <h1 className="title font-bold">{ resultMessage }</h1>
+                            <br/><br/>
                             {/* <div><h1>Baldness Result</h1> {imgPath && <img src={imgPath} alt={`Baldness ${responseData}%`} />} </div> */}
                            <p className="font-bold">Percentage: { resultPredict }%</p>
                         </Col>
                     </Row>
                 <Row>
                     <Col lg="12" className="text-center m-b-30">
-                       <img src={imgPath.current} alt="img" className="img-circle" width="290" />
+                       <img src={imgPath.current} alt="img" className="img-rounded" width="550" />
                         <br/><br/><br/><br/>
-                        <h4 className="card-title">Image with circle</h4>
-                        <h6 className="card-subtitle"><code>.img-circle</code> Make sure the image is square not ractangle</h6>
+                        <h6 className="card-subtitle"><code>확률 낮은</code> 머신러닝이니까 너무 믿지는 마셈</h6>
+                        <Button color="link" href="https://www.kaggle.com/datasets/itsnahm/baldness-probability">학습시킨 데이터 세트 링크(Kaggle)</Button>
+                        
                         <p className="m-t-15 m-b-0"></p>
                     </Col>
                 </Row>
