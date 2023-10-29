@@ -16,9 +16,14 @@ import kakaoLogo from '../../../assets/images/logos/kakao-button.jpg';
 import { Container, Row, Col } from 'reactstrap';
 
 //predict persent when image
-import img1 from '../../../assets/images/bald_result_img/1.jpg';
-import img2 from '../../../assets/images/bald_result_img/2.jpg';
-// import img3 from '../../../assets/images/ui/1.jpg'
+
+
+import very_safe_img from '../../../assets/images/bald_result_img/very_safe/img.jpg';
+import just_safe_img from '../../../assets/images/bald_result_img/just_safe/img.jpg';
+import not_safe_img from '../../../assets/images/bald_result_img/not_safe/img.jpg';
+import warning_img from '../../../assets/images/bald_result_img/vwarning/img.jpg';
+import bald_img from '../../../assets/images/bald_result_img/bald/img.jpg';
+
 
 //notbad Bald persent
 
@@ -42,24 +47,52 @@ const Result = () => {
             const resultPredict = Math.floor(parseInt(response.data.predict*100));
             setresultPredict(resultPredict);
          
-         if (resultPredict > 50){
-                console.log(resultPredict)
-                console.log(true)
 
-                imgPath.current = img1;
-                var resultMessage = 'you really really dangerous now'
+            if (resultPredict <= 25) {
+                imgPath.current = very_safe_img;
+                var resultMessage = '지금 탈모갤로 놀러가 비틱질을 해보아요'
                 setresultMessage(resultMessage)
-                console.log('bad')
 
-            } 
-            else {
-                console.log(false)
+              } else if (resultPredict <= 50) {
+                imgPath.current = just_safe_img;
+                var resultMessage = '아직 사소해 ㄱㅊㄱㅊ'
+                setresultMessage(resultMessage)
 
-                imgPath.current = img2;
-              var resultMessage = 'happy happy cat you safe'
-              setresultMessage(resultMessage)
-                console.log('good')
-            }
+              } else if (resultPredict <= 75) {
+                imgPath.current = not_safe_img;
+                var resultMessage = '슬슬... 관리해야겠지?'
+                setresultMessage(resultMessage)
+
+              } else if (resultPredict <= 100) {
+                imgPath.current = warning_img;
+                var resultMessage = '어라 왜 눈물이?..'
+                setresultMessage(resultMessage)
+
+              } else {
+                imgPath.current = bald_img;
+                var resultMessage = '이미 문어대가리아님? 이거 왜 했음'
+                setresultMessage(resultMessage)
+
+              }
+
+        //  if (resultPredict > 50){
+        //         console.log(resultPredict)
+        //         console.log(true)
+
+        //         imgPath.current = img1;
+        //         var resultMessage = 'you really really dangerous now'
+        //         setresultMessage(resultMessage)
+        //         console.log('bad')
+
+        //     } 
+        //     else {
+        //         console.log(false)
+
+        //         imgPath.current = img2;
+        //       var resultMessage = 'happy happy cat you safe'
+        //       setresultMessage(resultMessage)
+        //         console.log('good')
+        //     }
         })
         .catch(error => {
             console.log('error:',error)
