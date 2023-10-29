@@ -11,6 +11,7 @@ import {
     TwitterShareButton,
     TwitterIcon,
 } from "react-share";
+import kakaoLogo from '../../../assets/images/logos/kakao-button.jpg';
 
 import { Container, Row, Col } from 'reactstrap';
 
@@ -47,10 +48,11 @@ const Result = () => {
 
                 imgPath.current = img1;
                 var resultMessage = 'you really really dangerous now'
-              setresultMessage(resultMessage)
+                setresultMessage(resultMessage)
                 console.log('bad')
 
-            } else {
+            } 
+            else {
                 console.log(false)
 
                 imgPath.current = img2;
@@ -93,6 +95,17 @@ const Result = () => {
         &:hover {
             background-color: #a99fee;
         }
+    `;
+
+
+    const KakaoShareButton = styled.a`
+	    cursor: pointer;
+        `;
+
+    const KakaoIcon = styled.img`
+    	width: 48px;
+    	height: 48px;
+    	border-radius: 24px;
     `;
     
     const currentUrl = window.location.href;
@@ -149,11 +162,11 @@ const Result = () => {
                       integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" 
                         crossorigin="anonymous">
                 </script> */}
-                <button id="kakao-share-button">kakao</button>
             </Container>
 			
             <FlexContainer>
-                <h1>social send</h1>
+                <h1>친구들과 공유하기</h1>
+                <br/>
                 <GridContainer>
                     <FacebookShareButton url={currentUrl}>
                         <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>
@@ -164,7 +177,9 @@ const Result = () => {
                     <CopyToClipboard text={currentUrl}>
                         <URLShareButton>URL</URLShareButton>
                     </CopyToClipboard>
-                <button>4</button>
+                    <KakaoShareButton>
+					<KakaoIcon  id="kakao-share-button" src={kakaoLogo}></KakaoIcon>
+				</KakaoShareButton>
                 </GridContainer>
             </FlexContainer>
 
