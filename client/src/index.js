@@ -20,10 +20,10 @@ var hist = createBrowserHistory();
 root.render(
   <BrowserRouter history={hist}>
     <Routes>
-      <Route path="/custom-components" element={<CustomComponents />} />
+      {/* <Route path="/custom-components" element={<CustomComponents />} /> */}
       <Route path="/" element={<Main />} />
-      <Route path="/components" element={<Components />}/>
-      <Route path="/result" element={<Result />}/>
+      {/* <Route path="/components" element={<Components />}/> */}
+      {/* <Route path="/result" element={<Result />}/> */}
     </Routes>
   </BrowserRouter>
 );

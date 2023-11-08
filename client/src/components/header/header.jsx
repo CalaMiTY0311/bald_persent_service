@@ -19,11 +19,16 @@ const Header = () => {
             <div className="header6">
                 <Container className="po-relative">
                     <Navbar className="navbar-expand-lg h6-nav-bar">
-                        <NavbarBrand href="/"><img src={logo} alt="wrapkit" /></NavbarBrand>
+                        {/* <NavbarBrand href="/"><img src={logo} alt="wrapkit" /></NavbarBrand> */}
                         <NavbarToggler onClick={toggle}><span className="ti-menu"></span></NavbarToggler>
                         <Collapse isOpen={isOpen} navbar className="hover-dropdown font-14 justify-content-end" id="h6-info">
                             <Nav navbar className="ms-auto">
-                                <NavItem>
+                                {/* <NavItem>
+                                    <Link className="btn btn-success-gradiant font-14" to="/">
+                                        테스트하러 가기
+                                    </Link>
+                                </NavItem> */}
+                                {/* <NavItem>
                                     <Link className="nav-link" to="/components">
                                         Components
                                     </Link>
@@ -32,11 +37,11 @@ const Header = () => {
                                     <Link className="nav-link" to="/custom-components">
                                         Custom-Components
                                     </Link>
-                                </NavItem>
+                                </NavItem> */}
                             </Nav>
-                            <div className="act-buttons">
+                            {/* <div className="act-buttons">
                                 <Link to="/coming" className="btn btn-success-gradiant font-14">Upgrade To Pro</Link>
-                            </div>
+                            </div> */}
                         </Collapse>
                     </Navbar>
                 </Container>

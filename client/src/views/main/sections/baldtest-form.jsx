@@ -39,7 +39,7 @@ function Baldform ()  {
                     <Col md="8">
                         <Form className="row">
                         <FormGroup>
-        <Label htmlFor="age">Age</Label>
+        <Label htmlFor="age">나이</Label>
         <Input
           type="number"
           className="form-control"
@@ -50,7 +50,7 @@ function Baldform ()  {
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="gender">Gender</Label>
+        <Label htmlFor="gender">성별</Label>
         <Input
           type="select"
           className="form-control"
@@ -63,7 +63,7 @@ function Baldform ()  {
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="is_married">Married</Label>
+        <Label htmlFor="is_married">결혼여부</Label>
         <Input
           type="select"
           className="form-control"
@@ -76,7 +76,7 @@ function Baldform ()  {
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="is_hereditary">Hereditary</Label>
+        <Label htmlFor="is_hereditary">탈모유전유무</Label>
         <Input
           type="select"
           className="form-control"
@@ -89,7 +89,7 @@ function Baldform ()  {
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="weight">Weight</Label>
+        <Label htmlFor="weight">몸무게</Label>
         <Input
           type="number"
           className="form-control"
@@ -100,7 +100,7 @@ function Baldform ()  {
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="height">Height</Label>
+        <Label htmlFor="height">키</Label>
         <Input
           type="number"
           className="form-control"
@@ -111,7 +111,7 @@ function Baldform ()  {
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="is_smoker">Smoker</Label>
+        <Label htmlFor="is_smoker">흡연여부</Label>
         <Input
           type="select"
           className="form-control"
@@ -124,7 +124,7 @@ function Baldform ()  {
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="stress">Stress</Label>
+        <Label htmlFor="stress">자신이 현재 받고있는 스트레스의 수치를 1~10으로 나타내주세요</Label>
         <Input
           type="number"
           className="form-control"
