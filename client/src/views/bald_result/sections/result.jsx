@@ -29,14 +29,23 @@ const Result = () => {
     const searchParams = new URLSearchParams(location.search);
    const dataParam = searchParams.get('data');
 
+   console.log(dataParam)
     const [resultPredict, setresultPredict] = useState(null);
     const [resultMessage , setresultMessage] = useState(null); 
     
     let imgPath = useRef('');
 
    const data = JSON.parse(dataParam);
+   data.age = parseInt(data.age);
+   data.weight = parseFloat(data.weight);
+   data.height = parseFloat(data.height);
+   
+   for (const key in data) {
+  if (data.hasOwnProperty(key)) {
+    console.log(`Key: ${key}, Value: ${data[key]}, Type: ${typeof data[key]}`);
+  }
+}
 
-    // get resultPredict
     useEffect(() => {
    axios.post('http://localhost:8000/bald_persent_predict', data)
         .then(response =>{

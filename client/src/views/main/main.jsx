@@ -20,7 +20,7 @@ const Main = () => {
                     <Baldform />
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

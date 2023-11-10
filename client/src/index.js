@@ -12,6 +12,7 @@ import {
 import Components from "./views/components/components.jsx";
 import CustomComponents from "./views/custom-components/custom-components.jsx";
 import Main from "./views/main/main.jsx";
+import Test from "./views/test/test.jsx";
 import Result from "./views/bald_result/bald_result.jsx"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,8 +23,9 @@ root.render(
     <Routes>
       {/* <Route path="/custom-components" element={<CustomComponents />} /> */}
       <Route path="/" element={<Main />} />
+      <Route path="/test" element={<Test/>}/>
       {/* <Route path="/components" element={<Components />}/> */}
-      {/* <Route path="/result" element={<Result />}/> */}
+      <Route path="/result" element={<Result />}/>
     </Routes>
   </BrowserRouter>
 );
