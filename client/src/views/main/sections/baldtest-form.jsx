@@ -12,3 +12,4 @@ function Baldform ()  {
 }
 
 export default Baldform;
+ 

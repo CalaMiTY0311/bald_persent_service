@@ -36,7 +36,7 @@ function Baldform() {
   const Bald_datapost = () => {
     // You can access the user's responses in the formData object
     // Now, you can use formData to navigate or process the data as needed
-    // Navigate(`result?data=${JSON.stringify(formData)}`);
+    // Navigate(`result?data=${JSON.stringify(formData)}`);a
     console.log(formData)
     Navigate(`/result?data=${JSON.stringify(formData)}`)
   };

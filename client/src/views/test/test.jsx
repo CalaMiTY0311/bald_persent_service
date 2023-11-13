@@ -16,7 +16,6 @@ const Test = () => {
             <Header />
             <div className="page-wrapper">
                 <div className="container-fluid">
-                    <HeaderBanner />
                     <Baldform />
                 </div>
             </div>
