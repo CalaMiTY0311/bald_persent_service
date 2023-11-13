@@ -24,7 +24,7 @@ root.render(
       {/* <Route path="/custom-components" element={<CustomComponents />} /> */}
       <Route path="/" element={<Main />} />
       <Route path="/test" element={<Test/>}/>
-      {/* <Route path="/components" element={<Components />}/> */}
+       <Route path="/components" element={<Components />}/>
       <Route path="/result" element={<Result />}/>
     </Routes>
   </BrowserRouter>

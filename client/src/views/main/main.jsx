@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // core components
-import Header from "../../components/header/header.jsx";
+// import Header from "../../components/header/header.jsx";
+import MainPage from "../../components/main-page/main-page.jsx";
 import HeaderBanner from "../../components/banner/banner.jsx";
 import Footer from "../../components/footer/footer.jsx";
 
@@ -12,16 +13,7 @@ import Baldform from "./sections/baldtest-form.jsx";
 
 const Main = () => {
     return (
-        <div id="main-wrapper">
-            <Header />
-            <div className="page-wrapper">
-                <div className="container-fluid">
-                    <HeaderBanner />
-                    <Baldform />
-                </div>
-            </div>
-            {/* <Footer /> */}
-        </div>
+        <MainPage />
     );
 }
 

@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Baldform ()  {
-  	
-
     return (
       <div></div>
     );
