@@ -32,10 +32,7 @@ const BaldForm = () => {
     if (step === 1 && (age === '' || isNaN(age) || age < 0 || age >= 100)) {
       alert('0~99까지의 숫자 또는 공백이 아니어야합니다.');
       return;
-    } else if (step === 8 && (stress === '' || isNaN(stress) || stress < 1 || stress > 10)) {
-      alert('스트레스는 1부터 10까지의 숫자 또는 공백이 아니어야합니다.');
-      return;
-    }
+    } 
     setStep((prevStep) => prevStep + 1);
   };
 
@@ -64,7 +61,10 @@ const BaldForm = () => {
   };
 
   const submitForm = () => {
-    
+    if (step === 8 && (stress === '' || isNaN(stress) || stress < 1 || stress > 10)) {
+      alert('스트레스는 1부터 10까지의 숫자 또는 공백이 아니어야합니다.');
+      return;
+    }
     console.log(formData);
     navigate(`/result?data=${JSON.stringify(formData)}`);
   };
@@ -77,6 +77,7 @@ const BaldForm = () => {
             <>
               <h1 className="title font-bold">본인의 나이를 입력해주세요</h1>
               <h6 className="subtitle">부정확한 값을 입력하면 이상한 값이 나오니 조심해주세요.</h6>
+              <br/>
               <input type="number" placeholder="나이" value={age} onChange={(e) => setAge(e.target.value)} />
               <br/>
               <Button variant="outline-primary" className="btn btn-block" onClick={nextStep}>
@@ -89,6 +90,7 @@ const BaldForm = () => {
             <>
               <h1 className="title font-bold">성별이 무엇인가요?</h1>
               <h6 className="subtitle">남성과 여성외의 성별을 선택 할 수 없습니다.</h6>
+              <br/>
               <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('gender', 1)}>
                 남성
               </Button>
@@ -106,6 +108,7 @@ const BaldForm = () => {
             <>
               <h1 className="title font-bold">결혼 유무</h1>
               <h6 className="subtitle">현재를 기준으로 골라주세요.</h6>
+              <br/>
               <Button
                 variant="outline-primary"
                 className="btn btn-block"
@@ -131,6 +134,7 @@ const BaldForm = () => {
             <>
               <h1 className="title font-bold">탈모 유전</h1>
               <h6 className="subtitle" style={{ marginBottom: '15px' }}>탈모가 유전인지 아닌지에 따라 현재 탈모 위험도 수치에 영향을 많이 끼쳐요</h6>
+              <br/>
               <Button
                 variant="outline-primary"
                 className="btn btn-block"
@@ -186,6 +190,7 @@ const BaldForm = () => {
             <>
               <h1 className="title font-bold">흡연 여부</h1>
               <h6 className="subtitle" style={{ marginBottom: '15px' }}>현재 기준으로 흡연 여부를 알려주세요</h6>
+              <br/>
               <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('smoking', 1)}>
                 흡연
               </Button>

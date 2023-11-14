@@ -180,21 +180,19 @@ const Result = () => {
                 <Container>
                     <Row className="justify-content-center">
                         <Col md="7" className="text-center">
-                            <h1 className="title font-bold">Result</h1>
-                            <br/><br/>
-                            <h1 className="title font-bold">{ resultMessage }</h1>
+                            <h3 className="title font-bold">나의 탈모 위험도는??</h3>
+                            <h4 className="title font-bold">{ resultMessage }</h4>
                             <br/><br/>
                             {/* <div><h1>Baldness Result</h1> {imgPath && <img src={imgPath} alt={`Baldness ${responseData}%`} />} </div> */}
-                           <p className="font-bold">Percentage: { resultPredict }%</p>
+                           <p className="font-bold">현재 탈모 위험도 { resultPredict }%</p>
                         </Col>
                     </Row>
                 <Row>
                     <Col lg="12" className="text-center m-b-30">
                        <img src={imgPath.current} alt="img" className="img-rounded" width="550" />
-                        <br/><br/><br/><br/>
+                        <br/>
                         <h6 className="card-subtitle"><code>확률 낮은</code> 머신러닝이니까 너무 믿지는 마셈</h6>
                         <Button color="link" href="https://www.kaggle.com/datasets/itsnahm/baldness-probability">학습시킨 데이터 세트 링크(Kaggle)</Button>
-                        
                         <p className="m-t-15 m-b-0"></p>
                         <div className="act-buttons">
                             <Link to="/test" className="btn btn-success-gradiant font-14">다시 테스트 하러가기</Link>
@@ -208,7 +206,7 @@ const Result = () => {
             </Container>
 
             <FlexContainer>
-                <h1>친구들과 공유하기</h1>
+                <h2>친구들과 공유하기</h2>
                 <br/>
                 <GridContainer>
                     <FacebookShareButton url={currentUrl}>
