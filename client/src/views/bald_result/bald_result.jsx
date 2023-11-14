@@ -16,7 +16,6 @@ const Predict_Result = () => {
             <Header />
             <div className="page-wrapper">
                 <div className="container-fluid">
-                    <HeaderBanner />
                     <Result />
                 </div>
             </div>

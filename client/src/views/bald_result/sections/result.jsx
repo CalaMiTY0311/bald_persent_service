@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 
 //social container css
@@ -196,14 +196,17 @@ const Result = () => {
                         <Button color="link" href="https://www.kaggle.com/datasets/itsnahm/baldness-probability">학습시킨 데이터 세트 링크(Kaggle)</Button>
                         
                         <p className="m-t-15 m-b-0"></p>
-                    </Col>
+                        <div className="act-buttons">
+                            <Link to="/test" className="btn btn-success-gradiant font-14">다시 테스트 하러가기</Link>
+                        </div>
+                    </Col> 
                 </Row>
                 {/* <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js" 
                       integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" 
                         crossorigin="anonymous">
                 </script> */}
             </Container>
-			
+
             <FlexContainer>
                 <h1>친구들과 공유하기</h1>
                 <br/>
