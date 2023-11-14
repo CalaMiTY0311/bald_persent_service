@@ -1,285 +1,186 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Baldform() {
-  const Navigate = useNavigate();
+const BaldForm = () => {
+  const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    age: '',
-    gender: 1,
-    is_married: 1,
-    is_hereditary: 1,
-    weight: '',
-    height: '',
-    is_smoker: 1,
-    stress: 1,
-  });
+  const [step, setStep] = useState(1);
 
-  const questions = [
-    { label: '나이', key: 'age', type: 'number', options: [] },
-    { label: '성별', key: 'gender', type: 'select', options: ['Male', 'Female'] },
-    { label: '결혼여부', key: 'isMarried', type: 'select', options: ['Yes', 'No'] },
-    { label: '탈모유전유무', key: 'isHereditary', type: 'select', options: ['Yes', 'No'] },
-    { label: '몸무게', key: 'weight', type: 'number', options: [] },
-    { label: '키', key: 'height', type: 'number', options: [] },
-    { label: '흡연여부', key: 'isSmoker', type: 'select', options: ['Yes', 'No'] },
-    { label: '자신이 현재 받고있는 스트레스의 수치를 1~10으로 나타내주세요', key: 'stress', type: 'number', options: [] },
-  ];
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState(null);
+  const [is_married, setIs_married] = useState(null);
+  const [is_hereditary, setIs_hereditary] = useState(null);
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+  const [is_smoker, setIs_smoker] = useState(null);
+  const [stress, setStress] = useState('');
 
-  const [questionIndex, setQuestionIndex] = useState(0);
-
-  const handleInputChange = (key, value) => {
-    setFormData({ ...formData, [key]: value });
-  };
-  
-  const Bald_datapost = () => {
-    // You can access the user's responses in the formData object
-    // Now, you can use formData to navigate or process the data as needed
-    // Navigate(`result?data=${JSON.stringify(formData)}`);a
-    console.log(formData)
-    Navigate(`/result?data=${JSON.stringify(formData)}`)
+  const formData = {
+    age,
+    gender,
+    is_married,
+    is_hereditary,
+    weight,
+    height,
+    is_smoker,
+    stress,
   };
 
-
-
-
-  const renderQuestion = (question, index) => {
-    return (
-      <FormGroup key={index}>
-        <Label htmlFor={question.key}>{question.label}</Label>
-        {question.type === 'select' ? (
-          <Input
-            type="select"
-            className="form-control"
-            id={question.key}
-            value={formData[question.key]}
-            onChange={(e) => handleInputChange(question.key, e.target.value)}
-          >
-            {question.options.map((option, optionIndex) => (
-              <option key={optionIndex} value={option}>
-                {option}
-              </option>
-            ))}
-          </Input>
-        ) : (
-          <Input
-            type={question.type}
-            className="form-control"
-            id={question.key}
-            placeholder={`Enter ${question.label}`}
-            value={formData[question.key]}
-            onChange={(e) => handleInputChange(question.key, e.target.value)}
-          />
-        )}
-      </FormGroup>
-    );
+  const nextStep = () => {
+    setStep((prevStep) => prevStep + 1);
   };
 
-  const goToNextQuestion = () => {
-    if (questionIndex < questions.length - 1) {
-      setQuestionIndex(questionIndex + 1);
-    } else {
-      Bald_datapost();
+  const handleSelection = (field, value) => {
+    switch (field) {
+      case 'gender':
+        setGender(value);
+        break;
+      case 'maritalStatus':
+        setIs_married(value);
+        break;
+      case 'hairLossGenetics':
+        setIs_hereditary(value);
+        break;
+      case 'smoking':
+        setIs_smoker(value);
+        break;
+      default:
+        break;
     }
+    nextStep();
+  };
+
+  const submitForm = () => {
+    console.log(formData);
+    navigate(`/result?data=${JSON.stringify(formData)}`);
   };
 
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <Container>
-        <Row className="justify-content-center">
-          <Col md="8">
-            <Form className="row">
-              {renderQuestion(questions[questionIndex], questionIndex)}
-              <Col md="12">
-                {questionIndex > 0 && (
-                  <Button
-                    type="button"
-                    onClick={() => setQuestionIndex(questionIndex - 1)}
-                    className="btn btn-success waves-effect waves-light m-r-10"
-                  >
-                    Previous
-                  </Button>
-                )}
-                <Button
-                  type="button"
-                  onClick={goToNextQuestion}
-                  className="btn btn-success waves-effect waves-light m-r-10"
-                >
-                  {questionIndex < questions.length - 1 ? 'Next' : 'Submit'}
-                </Button>
-                <Button
-                  type="submit"
-                  className="btn btn-inverse waves-effect waves-light"
-                >
-                  Cancel
-                </Button>
-              </Col>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-      <br />
-      <br />
-      <br />
-    </div>
+    <Container>
+      <Row className="justify-content-center">
+        <Col md="7" className="text-center">
+          {step === 1 && (
+            <>
+              <h1 className="title font-bold">Step 1 Title</h1>
+              <h6 className="subtitle">Step 1 Subtitle</h6>
+              <input type="number" placeholder="나이" value={age} onChange={(e) => setAge(e.target.value)} />
+              <Button variant="outline-primary" className="btn btn-block" onClick={nextStep}>
+                다음
+              </Button>
+            </>
+          )}
+
+          {step === 2 && (
+            <>
+              <h1 className="title font-bold">Step 2 Title</h1>
+              <h6 className="subtitle">Step 2 Subtitle</h6>
+              <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('gender', 1)}>
+                남성
+              </Button>
+              <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('gender', 0)}>
+                여성
+              </Button>
+            </>
+          )}
+
+          {step === 3 && (
+            <>
+              <h1 className="title font-bold">Step 3 Title</h1>
+              <h6 className="subtitle">Step 3 Subtitle</h6>
+              <Button
+                variant="outline-primary"
+                className="btn btn-block"
+                onClick={() => handleSelection('maritalStatus', 1)}
+              >
+                결혼
+              </Button>
+              <Button
+                variant="outline-primary"
+                className="btn btn-block"
+                onClick={() => handleSelection('maritalStatus', 0)}
+              >
+                미혼
+              </Button>
+            </>
+          )}
+
+          {step === 4 && (
+            <>
+              <h1 className="title font-bold">Step 4 Title</h1>
+              <h6 className="subtitle">Step 4 Subtitle</h6>
+              <Button
+                variant="outline-primary"
+                className="btn btn-block"
+                onClick={() => handleSelection('hairLossGenetics', 1)}
+              >
+                유전 있음
+              </Button>
+              <Button
+                variant="outline-primary"
+                className="btn btn-block"
+                onClick={() => handleSelection('hairLossGenetics', 0)}
+              >
+                유전 없음
+              </Button>
+            </>
+          )}
+
+          {step === 5 && (
+            <>
+              <h1 className="title font-bold">Step 5 Title</h1>
+              <h6 className="subtitle">Step 5 Subtitle</h6>
+              <input type="number" placeholder="몸무게" value={weight} onChange={(e) => setWeight(e.target.value)} />
+              <Button variant="outline-primary" className="btn btn-block" onClick={nextStep}>
+                다음
+              </Button>
+            </>
+          )}
+
+          {step === 6 && (
+            <>
+              <h1 className="title font-bold">Step 6 Title</h1>
+              <h6 className="subtitle">Step 6 Subtitle</h6>
+              <input type="number" placeholder="키" value={height} onChange={(e) => setHeight(e.target.value)} />
+              <Button variant="outline-primary" className="btn btn-block" onClick={nextStep}>
+                다음
+              </Button>
+            </>
+          )}
+
+          {step === 7 && (
+            <>
+              <h1 className="title font-bold">Step 7 Title</h1>
+              <h6 className="subtitle">Step 7 Subtitle</h6>
+              <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('smoking', 1)}>
+                흡연
+              </Button>
+              <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('smoking', 0)}>
+                비흡연
+              </Button>
+            </>
+          )}
+
+          {step === 8 && (
+            <>
+              <h1 className="title font-bold">Step 8 Title</h1>
+              <h6 className="subtitle">Step 8 Subtitle</h6>
+              <input
+                type="number"
+                placeholder="스트레스 수치"
+                value={stress}
+                onChange={(e) => setStress(e.target.value)}
+              />
+              <Button variant="outline-primary" className="btn btn-block" onClick={submitForm}>
+                제출
+              </Button>
+            </>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
-export default Baldform;
-
-// import React, { useState } from 'react';
-// import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-// import { useNavigate } from 'react-router-dom';
-
-
-// function Baldform ()  {
-  	
-//   	const Navigate = useNavigate();
-		
-//     const [age, setAge] = useState(''); 
-//     const [gender, setGender] = useState(1); 
-//     const [isMarried, setIsMarried] = useState(1); 
-//     const [isHereditary, setIsHereditary] = useState(1); 
-//     const [weight, setWeight] = useState(''); 
-//     const [height, setHeight] = useState(''); 
-//     const [isSmoker, setIsSmoker] = useState(1); 
-//     const [stress, setStress] = useState(1);
-
-//     const [questionIndex, setQuestionIndex] = useState(0);
-//     const [answers, setAnswers] = useState([]);
-
-//     const questions = [
-//       {
-//         question: '나이를 입력해주세요',
-//         options: [],
-//         type: 'number',
-//       },
-//       {
-//         question: '성별을 선택해주세요',
-//         options: ['Male', 'Female'],
-//         type: 'select',
-//       },
-//       {
-//         question: '결혼 여부를 선택해주세요',
-//         options: ['Yes', 'No'],
-//         type: 'select',
-//       },
-//       {
-//         question: '탈모 유전을 가지고 계신가요?',
-//         options: ['Yes', 'No'],
-//         type: 'select',
-//       },
-//       {
-//         question: '몸무게를 알려주세요',
-//         options: [],
-//         type: 'number',
-//         step:'0.1'
-//       },
-//       {
-//         question: '키도 알려주세요',
-//         options: [],
-//         type: 'number',
-//         step:'0.1',
-//       },
-//       {
-//         question: '거의다 오셨어요 흡연은 하시나요?',
-//         options: ['Yes', 'No'],
-//         type: 'select',
-//       },
-//       {
-//         question: '마지막으로 현재 자신의 스트레스를 1~10으로 표현해주세요',
-//         options: [],
-//         type: 'number',
-//       },
-//     ]
-//     const handleAnswer = (answer) => {
-//       const newAnswers = [...answers];
-//       newAnswers[questionIndex] = answer;
-//       setAnswers(newAnswers);
-//     };
-  
-//     const handleSubmit = () => {
-//       // Calculate the result using answers array and any desired logic
-//       // Example: You can use the answers to calculate the MBTI type
-//       // const mbtiType = calculateMBTI(answers);
-//       // Then you can navigate to the result page with the calculated result
-//       Navigate(`/result?data=${JSON.stringify(answers)}`);
-//     };
-
-
-//     const Bald_datapost =  () => {
-// 		const data = { 
-//             			age: age, 
-//             			gender: gender, 
-//                         is_married: isMarried, 
-//                         is_hereditary: isHereditary, 
-//                         weight: weight, 
-//                         height: height, 
-//                         is_smoker: isSmoker, 
-//                         stress: stress, 
-//                     };
-//                   Navigate(`result?data=${JSON.stringify(data)}`)
-                  
-//       }
-//       const renderQuestion = (question, index) =>{
-//     return (
-//       <div>
-//       <br />
-//       <br />
-//       <br />
-//       <Container>
-//         <Row className="justify-content-center">
-//           <Col md="8">
-//             <Form className="row">
-//               {renderQuestion(questions[questionIndex], questionIndex)}
-//               <Col md="12">
-//                 {questionIndex > 0 && (
-//                   <Button
-//                     type="button"
-//                     onClick={() => setQuestionIndex(questionIndex - 1)}
-//                     className="btn btn-success waves-effect waves-light m-r-10"
-//                   >
-//                     Previous
-//                   </Button>
-//                 )}
-//                 {questionIndex < questions.length - 1 ? (
-//                   <Button
-//                     type="button"
-//                     onClick={() => setQuestionIndex(questionIndex + 1)}
-//                     className="btn btn-success waves-effect waves-light m-r-10"
-//                   >
-//                     Next
-//                   </Button>
-//                 ) : (
-//                   <Button
-//                     type="button"
-//                     onClick={handleSubmit}
-//                     className="btn btn-success waves-effect waves-light m-r-10"
-//                   >
-//                     Submit
-//                   </Button>
-//                 )}
-//                 <Button
-//                   type="submit"
-//                   className="btn btn-inverse waves-effect waves-light"
-//                 >
-//                   Cancel
-//                 </Button>
-//               </Col>
-//             </Form>
-//           </Col>
-//         </Row>
-//       </Container>
-//       <br />
-//       <br />
-//       <br />
-//     </div>
-//   );
-// }
-// }
-
-// export default Baldform;
+export default BaldForm;

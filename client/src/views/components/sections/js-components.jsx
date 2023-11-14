@@ -93,6 +93,7 @@ const JsComponents = (props) => {
                     </Row>
                 </Container>
             </div>
+            <Button type="button" className="btn btn-block waves-effect waves-light btn-outline-primary m-b-30">Large Modal</Button>
             <Container>
                 <Row className="m-b-40">
                     <Col md="6" className='d-flex flex-column'>
