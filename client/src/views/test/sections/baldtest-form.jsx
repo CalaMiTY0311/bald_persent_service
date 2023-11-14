@@ -32,6 +32,10 @@ const BaldForm = () => {
     setStep((prevStep) => prevStep + 1);
   };
 
+  const prevStep = () => {
+    setStep((prevStep) => prevStep - 1);
+  };
+
   const handleSelection = (field, value) => {
     switch (field) {
       case 'gender':
@@ -60,12 +64,13 @@ const BaldForm = () => {
   return (
     <Container>
       <Row className="justify-content-center">
-        <Col md="7" className="text-center">
+        <Col md="7" className="text-center" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
           {step === 1 && (
             <>
               <h1 className="title font-bold">Step 1 Title</h1>
               <h6 className="subtitle">Step 1 Subtitle</h6>
               <input type="number" placeholder="나이" value={age} onChange={(e) => setAge(e.target.value)} />
+              <br/>
               <Button variant="outline-primary" className="btn btn-block" onClick={nextStep}>
                 다음
               </Button>
@@ -81,6 +86,10 @@ const BaldForm = () => {
               </Button>
               <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('gender', 0)}>
                 여성
+              </Button>
+              <br/>
+              <Button variant="outline-secondary" className="btn btn-block" onClick={prevStep}>
+                이전
               </Button>
             </>
           )}
@@ -103,13 +112,17 @@ const BaldForm = () => {
               >
                 미혼
               </Button>
+              <br/>
+              <Button variant="outline-secondary" className="btn btn-block" onClick={prevStep}>
+                이전
+              </Button>
             </>
           )}
 
           {step === 4 && (
             <>
               <h1 className="title font-bold">Step 4 Title</h1>
-              <h6 className="subtitle">Step 4 Subtitle</h6>
+              <h6 className="subtitle" style={{ marginBottom: '15px' }}>Step 4 Subtitle</h6>
               <Button
                 variant="outline-primary"
                 className="btn btn-block"
@@ -124,16 +137,24 @@ const BaldForm = () => {
               >
                 유전 없음
               </Button>
+              <br/>
+              <Button variant="outline-secondary" className="btn btn-block" onClick={prevStep}>
+                이전
+              </Button>
             </>
           )}
 
           {step === 5 && (
             <>
               <h1 className="title font-bold">Step 5 Title</h1>
-              <h6 className="subtitle">Step 5 Subtitle</h6>
+              <h6 className="subtitle" style={{ marginBottom: '15px' }}>Step 5 Subtitle</h6>
               <input type="number" placeholder="몸무게" value={weight} onChange={(e) => setWeight(e.target.value)} />
+              <br/>
               <Button variant="outline-primary" className="btn btn-block" onClick={nextStep}>
                 다음
+              </Button>
+              <Button variant="outline-secondary" className="btn btn-block" onClick={prevStep}>
+                이전
               </Button>
             </>
           )}
@@ -141,8 +162,12 @@ const BaldForm = () => {
           {step === 6 && (
             <>
               <h1 className="title font-bold">Step 6 Title</h1>
-              <h6 className="subtitle">Step 6 Subtitle</h6>
+              <h6 className="subtitle" style={{ marginBottom: '15px' }}>Step 6 Subtitle</h6>
               <input type="number" placeholder="키" value={height} onChange={(e) => setHeight(e.target.value)} />
+              <br/>
+              <Button variant="outline-secondary" className="btn btn-block" onClick={prevStep}>
+                이전
+              </Button>
               <Button variant="outline-primary" className="btn btn-block" onClick={nextStep}>
                 다음
               </Button>
@@ -152,12 +177,16 @@ const BaldForm = () => {
           {step === 7 && (
             <>
               <h1 className="title font-bold">Step 7 Title</h1>
-              <h6 className="subtitle">Step 7 Subtitle</h6>
+              <h6 className="subtitle" style={{ marginBottom: '15px' }}>Step 7 Subtitle</h6>
               <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('smoking', 1)}>
                 흡연
               </Button>
               <Button variant="outline-primary" className="btn btn-block" onClick={() => handleSelection('smoking', 0)}>
                 비흡연
+              </Button>
+              <br/>
+              <Button variant="outline-secondary" className="btn btn-block" onClick={prevStep}>
+                이전
               </Button>
             </>
           )}
@@ -165,13 +194,17 @@ const BaldForm = () => {
           {step === 8 && (
             <>
               <h1 className="title font-bold">Step 8 Title</h1>
-              <h6 className="subtitle">Step 8 Subtitle</h6>
+              <h6 className="subtitle" style={{ marginBottom: '15px' }}>Step 8 Subtitle</h6>
               <input
                 type="number"
                 placeholder="스트레스 수치"
                 value={stress}
                 onChange={(e) => setStress(e.target.value)}
               />
+              <br/>
+              <Button variant="outline-secondary" className="btn btn-block" onClick={prevStep}>
+                이전
+              </Button>
               <Button variant="outline-primary" className="btn btn-block" onClick={submitForm}>
                 제출
               </Button>
