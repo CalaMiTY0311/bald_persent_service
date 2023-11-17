@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from 'styled-components';
+
+const ResultContainer = styled.div`
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  padding: 462px;
+  margin-left: 455px; /* 왼쪽에 100px 여백 추가 */
+  margin-right: 455px; /* 오른쪽에 100px 여백 추가 */
+`;
 
 const BaldForm = () => {
   const navigate = useNavigate();
@@ -70,6 +79,7 @@ const BaldForm = () => {
   };
 
   return (
+    <ResultContainer>
     <Container>
       <Row className="justify-content-center">
         <Col md="7" className="text-center" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -214,6 +224,7 @@ const BaldForm = () => {
         </Col>
       </Row>
     </Container>
+    </ResultContainer>
   );
 };
 
@@ -246,7 +257,6 @@ const styles = `
     font-size: 16px; /* 버튼 텍스트 크기 */
 `;
 
-// 스타일을 head에 추가
 const styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = styles;
