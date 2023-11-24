@@ -21,7 +21,7 @@ path = os.path.join(directory, 'bald_probability.csv')
 
 dataset = pd.read_csv(path, index_col=0, encoding='utf-8-sig')
 
-train, test = train_test_split(dataset, test_size = 0.3)
+train, test = train_test_split(dataset, test_size = 0.11, random_state = 42)
 X_train = train[['age', 'gender', 'is_married', 'is_hereditary', 'weight', 'height', 'is_smoker', 'stress']]
 y_train = train['bald_prob']
 X_test = test[['age', 'gender', 'is_married', 'is_hereditary', 'weight', 'height', 'is_smoker', 'stress']] 
@@ -33,8 +33,6 @@ X_test_poly = poly.transform(X_test)
 
 model = LinearRegression()
 complete_model = model.fit(X_train_poly, y_train)
-
-#need bald_train function :<
 
 def accuracy_result():
 #----------------------------------------------------accuracy----------------------------------------------------

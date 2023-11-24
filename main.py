@@ -49,7 +49,7 @@ async def bald_persent_predict(data : bald_persent_info):
 	#now_accuracy = bald_score.accuracy
 	
 	result = {
-            # "now_acc":now_acc, 
+        	# "now_acc":now_acc, 
            "predict":predict.tolist()[0]
                }
 	# result = {"predict_result":bald_persent_result, "now_accuracy":now_accuracy}
