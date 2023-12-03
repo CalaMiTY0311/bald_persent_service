@@ -56,7 +56,7 @@ async def bald_persent_predict(data : bald_persent_info):
     
 	poly = PolynomialFeatures(degree=2)
 	data = poly.fit_transform(data)
-	predict = complete_model(data)
+	predict = complete_model.predict(data)
 
 	result = {"predict":predict.tolist()[0]}
 	return result
