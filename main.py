@@ -4,6 +4,7 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
 import numpy as np
+import joblib
 
 app = FastAPI()
 
@@ -27,7 +28,8 @@ class bald_persent_info(BaseModel):
 	stress: int 
     
 
-from bald_persent_score.bald_score import accuracy_result,predict_result
+from bald_persent_score import complete_model
+from sklearn.preprocessing import PolynomialFeatures
 
 @app.post("/bald_persent_predict")
 async def bald_persent_predict(data : bald_persent_info):
@@ -42,18 +44,21 @@ async def bald_persent_predict(data : bald_persent_info):
 				"stress":data.stress
 			}
 	
-	data = np.array([data_dict["age"], data_dict["gender"], data_dict["is_married"], data_dict["is_hereditary"], data_dict["weight"], data_dict["height"], data_dict["is_smoker"], data_dict["stress"]]).reshape(1, -1)
-	predict = predict_result(data)
-	
-	# now_acc = accuracy_result()
-	#now_accuracy = bald_score.accuracy
-	
-	result = {
-        	# "now_acc":now_acc, 
-           "predict":predict.tolist()[0]
-               }
-	# result = {"predict_result":bald_persent_result, "now_accuracy":now_accuracy}
-	# return result
+	data = np.array([
+            		data_dict["age"], 
+                  	data_dict["gender"], 
+                    data_dict["is_married"], 
+                    data_dict["is_hereditary"], 
+                    data_dict["weight"], 
+                    data_dict["height"], 
+                    data_dict["is_smoker"], 
+                    data_dict["stress"]]).reshape(1, -1)
+    
+	poly = PolynomialFeatures(degree=2)
+	data = poly.fit_transform(data)
+	predict = complete_model(data)
+
+	result = {"predict":predict.tolist()[0]}
 	return result
 
 if __name__=='__main__': 

@@ -1,1 +1,0 @@
-# bald_persent_score
