@@ -9,7 +9,9 @@ import joblib
 app = FastAPI()
 
 app.add_middleware( CORSMiddleware, 
-                   allow_origins=["http://localhost:3000"], # 클라이언트 주소를 여기에 설정 
+                   allow_origins=["*"],
+                #    allow_origins=["https://man-vs-talmo-client-he3s4xddp-shinis-projects.vercel.app"
+                #                   ,"http://localhost:3000"],
 				   allow_methods=["*"], 
 				   allow_headers=["*"], )
 
