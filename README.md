@@ -17,13 +17,13 @@ python main.py
 ```
 
 ## 
-age = 정수형태의 나이 값을 받습니다.
-gender = 성별은 1과 0 값으로 받습니다. (1 = 남자 and 0 = 여자)
-is_married = 결혼 여부를 1과 0 값으로 받습니다. (1 = Yes and 0 = No)
-is_hereditary = 부모로 부터 탈모 유전의 유무 값을 받습니다. (1 = Yes and 0 = No)
-weight = 몸무게 값을 받습니다.(소수 첫번 쨰 자리까지)
-height = 키 값을 받습니다.(소수 첫번 째 자리까지)
-is_smoker = 흡연유무를 값으로 받습니다. (1 = Yes and 0 = No)
+age = 정수형태의 나이 값을 받습니다.</br>
+gender = 성별은 1과 0 값으로 받습니다. (1 = 남자 and 0 = 여자)</br>
+is_married = 결혼 여부를 1과 0 값으로 받습니다. (1 = Yes and 0 = No)</br>
+is_hereditary = 부모로 부터 탈모 유전의 유무 값을 받습니다. (1 = Yes and 0 = No)</br>
+weight = 몸무게 값을 받습니다.(소수 첫번 쨰 자리까지)</br>
+height = 키 값을 받습니다.(소수 첫번 째 자리까지)</br>
+is_smoker = 흡연유무를 값으로 받습니다. (1 = Yes and 0 = No)</br>
 stress = 본인이 상객하는 현재 받고있는 스트레스의 수치를 1(낮음) 부터 10(높음)까지 값으로 받습니다.
 
 ;;
