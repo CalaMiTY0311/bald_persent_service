@@ -1,11 +1,6 @@
 # man_vs_talmo API
 머신 러닝 모델을 사용해 8개의 질문으로 탈모확률을 예측하는 API입니다.
 
-## 개발 환경
-운영 체제 : 윈도우</br>
-언어 : Python v3.9</br>
-프레임워크 : FastAPI</br>
-
 ## 시작 하기
 1. Install dependencies
 ```zsh
