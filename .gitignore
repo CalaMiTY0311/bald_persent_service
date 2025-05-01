@@ -1,2 +1,4 @@
-bald_persent_score/bald_probability.csv
+dataset.csv
+test.csv
+fly.toml
 __pycache__
