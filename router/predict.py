@@ -13,16 +13,43 @@ import util.config as gConfig
 config = gConfig.Config()
 inputModel = gConfig.UserInput
 
-router = APIRouter(
+predict = APIRouter(
     prefix="/predict"
 )
 
 with open('talmo.pkl', 'rb') as f:
     model = pickle.load(f)
 
-@router.post("")
-async def predict_baldness(input: inputModel):
+@predict.post("")
+async def default(input: inputModel):
     try:
+        missing_fields = []
+        
+        if not input.age:
+            missing_fields.append("age")
+        if not input.gender:
+            missing_fields.append("gender")
+        if not input.is_married:
+            missing_fields.append("is_married")
+        if not input.is_hereditary:
+            missing_fields.append("is_hereditary")
+        if not input.weight or input.weight <= 0:
+            missing_fields.append("weight")
+        if not input.height or input.height <= 0:
+            missing_fields.append("height")
+        if not input.is_smoker:
+            missing_fields.append("is_smoker")
+        if not input.stress:
+            missing_fields.append("stress")
+        
+        # 누락된 필드가 있으면 오류 반환
+        if missing_fields:
+            return {
+                "success": False,
+                "data": f"필드가 누락되었습니다: {', '.join(missing_fields)}"
+            }
+            
+        # 데이터프레임 생성
         user_df = pd.DataFrame([{
             "age": input.age, 
             "gender": input.gender, 
@@ -63,8 +90,14 @@ async def predict_baldness(input: inputModel):
             result["high_probability"] = round(prediction_proba[high_index] * 100, 2)
             result["low_probability"] = round(prediction_proba[low_index] * 100, 2)
         
-        return result
+        return { 
+                "success": True, 
+                "data": result
+                 }
     
     except Exception as e:
         print("e : ", e)
-        raise HTTPException(status_code=500, detail=f"예측 중 오류가 발생했습니다")
+        return {
+            "success": False,
+            "data": "서버 오류가 발생했습니다"
+        }

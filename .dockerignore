@@ -1,8 +1,0 @@
-# flyctl launch added from .gitignore
-**\bald_persent_score\bald_probability.csv
-**\__pycache__
-
-# flyctl launch added from bald_persent_score\.gitignore
-bald_persent_score\**\.bald_probability.csv
-bald_persent_score\**\.__pycache__
-fly.toml

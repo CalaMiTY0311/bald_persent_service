@@ -6,21 +6,21 @@ sys.path.append(now_dir)
 datasetPath = os.path.join(now_dir,'dataset.csv')
 csvPath = os.path.join(now_dir,'test.csv')
 
-api_port = 6666
+api_port = 1542
 modelPath = os.path.join(now_dir,'talmo.pkl')
 
-from pydantic import BaseModel, Field
-from typing import Literal
+from pydantic import BaseModel
+from typing import Literal, Optional
 
 class UserInput(BaseModel):
-    age: str
-    gender: Literal["male", "female"]
-    is_hereditary: Literal["Yes", "No"]
-    stress: Literal["Level 1", "Level 2", "Level 3", "Level 4"]
-    is_married: Literal["Yes", "No"]
-    weight: float
-    height: float
-    is_smoker: Literal["Yes", "No"]
+    age: Optional[str] = None
+    gender: Optional[Literal["male", "female"]] = None
+    is_hereditary: Optional[Literal["Yes", "No"]] = None
+    stress: Optional[Literal["Level 1", "Level 2", "Level 3", "Level 4"]] = None
+    is_married: Optional[Literal["Yes", "No"]] = None
+    weight: Optional[float] = None
+    height: Optional[float] = None
+    is_smoker: Optional[Literal["Yes", "No"]] = None
 
 class Config:
     def __init__(self):

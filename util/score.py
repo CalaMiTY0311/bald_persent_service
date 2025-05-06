@@ -39,6 +39,6 @@ report = classification_report(y_test, y_pred)
 print(f'Accuracy: {accuracy}')
 print(f'Report:\n{report}')
 
-import pickle
-with open('talmo.pkl', 'wb') as f:
-    pickle.dump(model, f)
+# import pickle
+# with open('talmo.pkl', 'wb') as f:
+#     pickle.dump(model, f)

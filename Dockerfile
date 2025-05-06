@@ -1,13 +1,13 @@
 FROM python:3.8.17
 
-WORKDIR /app
+WORKDIR /talmoapi
 
 COPY requirements.txt ./requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY . /app
+COPY . /talmoapi
 
-EXPOSE 8000
+EXPOSE 1542
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "1542"]
