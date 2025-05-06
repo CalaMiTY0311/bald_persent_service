@@ -14,7 +14,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -23,6 +23,10 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"msg": "서버체크 ok"}
+
+@app.get("/1")
+async def root():
+    return {"deploy": "deploy github action test"}
 
 app.include_router(predict.predict)
 
