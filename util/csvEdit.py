@@ -21,13 +21,13 @@ print("결측치 인덱스 수 : ", df_na)
 mean_age = df["age"].mean()
 df['age'].fillna(round(mean_age), inplace=True)
 
-mean_weight = df['weight'].mean()
-df['weight'].fillna(mean_weight, inplace=True)
-df['weight'] = df['weight'].round(2)
+# mean_weight = df['weight'].mean()
+# df['weight'].fillna(mean_weight, inplace=True)
+# df['weight'] = df['weight'].round(2)
 
-mean_height = df['height'].mean()
-df['height'].fillna(mean_height, inplace=True)
-df['height'] = df['height'].round(2)
+# mean_height = df['height'].mean()
+# df['height'].fillna(mean_height, inplace=True)
+# df['height'] = df['height'].round(2)
 
 mean_stress = df['stress'].mean()
 df['stress'].fillna(round(mean_stress), inplace=True)
@@ -40,7 +40,7 @@ print("정제 후 결측치 인덱스 수 : ", df_na)
 
 df = df.dropna()  #NAN/빈값있는 행 제거
 
-########################################데이터 전처리################################################
+# ########################################데이터 전처리################################################
 df_err = df[df['age'] < 10]
 df = df[~df['age'].isin(df_err['age'])]
 

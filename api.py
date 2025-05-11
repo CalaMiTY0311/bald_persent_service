@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exception_handlers import http_exception_handler
 import uvicorn
 
+
 import util.config as gConfig
 from router import predict
 
