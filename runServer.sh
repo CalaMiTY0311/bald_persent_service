@@ -1,3 +1,5 @@
+bash#!/bin/bash
+set -x  # 디버그 모드 활성화
 echo "===== Docker 확인 및 설치 ====="
 cd /home/ubuntu
 if ! docker --version 2>/dev/null; then
