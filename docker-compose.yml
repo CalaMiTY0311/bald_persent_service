@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "1542:1542"
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./logs:/app/logs
