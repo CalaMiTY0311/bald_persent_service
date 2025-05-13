@@ -30,3 +30,5 @@ echo "Process completed!"
 sudo docker-compose down || true
 sudo docker-compose up -d
 sudo docker-compose ps
+
+sudo docker rm -f ubuntu_talmoapi
