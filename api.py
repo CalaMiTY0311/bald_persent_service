@@ -25,9 +25,9 @@ app.add_middleware(
 async def root():
     return {"msg": "서버체크 ok"}
 
-# @app.get("/1")
-# async def root():
-#     return {"deploy": "deploy github action test"}
+@app.get("/1")
+async def root():
+    return {"deploy": "deploy github action test"}
 
 app.include_router(predict.predict)
 
