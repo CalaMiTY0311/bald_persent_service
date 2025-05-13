@@ -1,7 +1,8 @@
 version: '3.8'
 services:
-  api:
+  talmoapi:
     build: .
+    container_name: talmoapi
     ports:
       - "1542:1542"
     restart: unless-stopped
