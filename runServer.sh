@@ -27,8 +27,12 @@ fi
 
 echo "Process completed!"
 
+echo "기존 컨테이너 중지 중..."
 sudo docker-compose down || true
-sudo docker-compose up -d
-sudo docker-compose ps
 
+echo "도커 이미지 다시 빌드 중..."
+sudo docker-compose build || echo "빌드 중 경고가 있지만 계속 진행합니다."
+
+echo "업데이트된 컨테이너 시작 중..."
+sudo docker-compose up -d
 # sudo docker rm -f ubuntu_talmoapi
