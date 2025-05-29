@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.middleware.cors import CORSMiddleware
+# from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exception_handlers import http_exception_handler
 import uvicorn
 
@@ -13,14 +13,14 @@ app = FastAPI(
     title="탈모 확률 예측 API",
 )
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    # allow_origins=["https://talmoclient.vercel.app", "http://localhost:5173"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],
+#     # allow_origins=["https://talmoclient.vercel.app", "http://localhost:5173"],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 @app.get("/")
 async def root():
